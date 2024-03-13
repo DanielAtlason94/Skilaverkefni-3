@@ -1,0 +1,49 @@
+displayMenu() {
+  print("\nMenu:");
+  print("1. Add an item to the list");
+  print("2. View the list");
+  print("3. Exit");
+}
+
+addItemToList(List<String> list) {
+  print("Enter the item to add: ");
+  String newItem = stdin.readLineSync(enco)!;
+  list.add(newItem);
+  print("$newItem added to the list.");
+}
+
+viewList(List<String> list) {
+  if (list.isEmpty) {
+    print("The grocery list is empty.");
+  } else {
+    print("Grocery List:");
+    list.forEach((item) {
+      print(item);
+    });
+  }
+}
+
+void main() {
+  List<String> groceryList = [];
+
+  while (true) {
+    displayMenu();
+    print("Enter your choice: ");
+    String choice = stdin.readLineSync()!;
+
+    switch (choice) {
+      case '1':
+        addItemToList(groceryList);
+        break;
+      case '2':
+        viewList(groceryList);
+        break;
+      case '3':
+        print("Program ended.");
+        viewList(groceryList);
+        return;
+      default:
+        print("Invalid choice. Please enter a number from the menu.");
+    }
+  }
+}
